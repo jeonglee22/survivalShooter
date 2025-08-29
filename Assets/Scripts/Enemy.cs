@@ -169,6 +169,9 @@ public class Enemy : LivingEntity
 	private Transform GetClosedObjectsInSphere(float distance)
 	{
 		var colliders = Physics.OverlapSphere(transform.position, distance, layer);
+		if (colliders.Length == 0)
+			return null;
+
 		var minDistObj = colliders[0];
 		for(int i = 1; i < colliders.Length; i++)
 		{

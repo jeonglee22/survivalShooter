@@ -1,3 +1,4 @@
+using System;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class LivingEntity : MonoBehaviour, IDamagable
 
 	public AudioClip damageClip;
 	public AudioClip deathClip;
+
+	public event Action OnDeath;
 
 	protected virtual void Awake()
 	{
@@ -38,6 +41,10 @@ public class LivingEntity : MonoBehaviour, IDamagable
 
 	public virtual void Die()
 	{
+		if(OnDeath != null)
+		{
+			OnDeath();
+		}
 		audioSource.PlayOneShot(deathClip);
 	}
 }
