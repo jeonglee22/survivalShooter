@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
 		lineRenderer = GetComponent<LineRenderer>();
 
 		lineRenderer.enabled = false;
+		shootParticle.lights.light.enabled = false;
 	}
 
 	private void Start()
@@ -31,6 +32,12 @@ public class Gun : MonoBehaviour
 		if(Physics.Raycast(transform.position, transform.forward, out hit ,gunData.fireDistance))
 		{
 			endPos = hit.point;
+
+			if(hit.collider.GetComponent<IDamagable>() != null)
+			{
+				var obj = hit.collider.GetComponent<IDamagable>();
+				obj.OnDamage(gunData.damage, hit.point, hit.normal);
+			}
 		}
 		else
 		{
@@ -53,6 +60,7 @@ public class Gun : MonoBehaviour
 	{
 		audioSource.PlayOneShot(gunData.shootClip);
 		shootParticle.Play();
+		shootParticle.lights.light.enabled = true;
 		
 		lineRenderer.enabled = true;
 
@@ -62,5 +70,6 @@ public class Gun : MonoBehaviour
 		yield return new WaitForSeconds(gunData.fireInterval * 0.5f);
 
 		lineRenderer.enabled = false;
+		shootParticle.lights.light.enabled = false;
 	}
 }

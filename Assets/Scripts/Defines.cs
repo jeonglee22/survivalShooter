@@ -6,4 +6,5 @@ public class Defines
     public static readonly string horizontal = "Horizontal";
 
     public static readonly string animatorMove = "Move";
+    public static readonly string animatorDie = "Die";
 }
