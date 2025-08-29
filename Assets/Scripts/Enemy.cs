@@ -97,7 +97,8 @@ public class Enemy : LivingEntity
 
 	private void UpdateAttack()
 	{
-		if(target != null && Vector3.Distance(transform.position, target.position) > enemyData.attackDistance)
+		if(target == null ||
+			(target != null && Vector3.Distance(transform.position, target.position) > enemyData.attackDistance))
 		{
 			CurrentStatus = Status.Trace;
 			return;
@@ -111,6 +112,7 @@ public class Enemy : LivingEntity
 			{
 				go.OnDamage(enemyData.damage, Vector3.zero, Vector3.zero);
 			}
+			lastAttackTime = Time.time;
 		}
 	}
 

@@ -5,6 +5,7 @@ public class PlayerHealth : LivingEntity
 	public override void Die()
 	{
 		base.Die();
+		//Destroy(gameObject);
 	}
 
 	public override void OnDamage(float damage, Vector3 hitPos, Vector3 hitNormal)
