@@ -4,4 +4,6 @@ public class Defines
 {
     public static readonly string vertical = "Vertical";
     public static readonly string horizontal = "Horizontal";
+
+    public static readonly string animatorMove = "Move";
 }

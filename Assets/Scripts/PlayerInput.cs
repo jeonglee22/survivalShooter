@@ -9,8 +9,8 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Horizontal = Input.GetAxisRaw(Defines.horizontal);
-        Vertical = Input.GetAxisRaw(Defines.vertical);
+        Horizontal = Input.GetAxis(Defines.horizontal);
+        Vertical = Input.GetAxis(Defines.vertical);
 
         if (Input.GetMouseButton(0))
             Shoot = true;
