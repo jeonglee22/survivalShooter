@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootClip: {fileID: 8300000, guid: fa7f046ce321d4021b5e753bf1152916, type: 3}
   fireDistance: 20
-  fireInterval: 0.2
+  fireInterval: 0.15
   ammoMax: 100
   magCapacity: 20
-  damage: 20
+  damage: 15

@@ -5,9 +5,9 @@ using UnityEngine;
 public class LivingEntity : MonoBehaviour, IDamagable
 {
 	public float maxHP = 100;
-	private float health;
+	protected float health;
 
-	private bool isDead;
+	protected bool isDead;
 
 	private AudioSource audioSource;
 

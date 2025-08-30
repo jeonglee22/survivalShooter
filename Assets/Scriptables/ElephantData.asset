@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ElephantData
   m_EditorClassIdentifier: 
   speed: 5
-  attackInterval: 0.5
+  attackInterval: 1.5
   maxHP: 200
-  detectDistance: 30
+  detectDistance: 50
   attackDistance: 2
-  damage: 20
+  damage: 30

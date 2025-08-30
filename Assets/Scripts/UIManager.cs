@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -11,11 +12,16 @@ public class UIManager : MonoBehaviour
 	public Slider effectSlider;
     public Toggle soundToggle;
     public GameObject menu;
+	public Image panelImage;
 
 	public SoundManager soundManager;
 
     public bool IsPaused { get; private set; }
     public bool SoundOnOff { get; private set; }
+
+	public int blinkingCount = 4;
+	public float blinkingTimeTotal = 0.5f;
+	private float alpha = 100f / 255f;
 
 	private void Awake()
 	{
@@ -29,6 +35,8 @@ public class UIManager : MonoBehaviour
         {
 			IsPaused = !IsPaused;
             menu.SetActive(IsPaused);
+
+			Time.timeScale = IsPaused ? 0 : 1;
         }
 	}
 
@@ -51,13 +59,11 @@ public class UIManager : MonoBehaviour
 	public void SetMusicVolume()
 	{
 		soundManager.MusicMixerControl(soundSlider.value);
-		Debug.Log(soundSlider.value);
 	}
 
 	public void SetEffectVolume()
 	{
 		soundManager.EffectMixerControl(effectSlider.value);
-		Debug.Log(effectSlider.value);
 	}
 
 	public void SetHealthSlider(float healthPercent)
@@ -68,5 +74,23 @@ public class UIManager : MonoBehaviour
 	public void SetScoreText(int score)
 	{
 		scoreText.text = $"Score : {score}";
+	}
+
+	public void PanelFliking()
+	{
+		panelImage.gameObject.SetActive(true);
+		StartCoroutine(Blinking());
+	}
+
+	private IEnumerator Blinking()
+	{
+		for(int i = 0; i < blinkingCount; i++)
+		{
+			Color color = panelImage.color;
+			color.a = alpha - panelImage.color.a;
+			panelImage.color = color;
+			yield return new WaitForSeconds(blinkingTimeTotal / blinkingCount);
+		}
+		panelImage.gameObject.SetActive(false);
 	}
 }

@@ -11,4 +11,6 @@ public class Defines
     public static readonly string musicVol = "musicVol";
     public static readonly string effectVol = "sfxVol";
     public static readonly string masterVol = "Master";
+
+    public static readonly string gameManagerStr = "GameController";
 }

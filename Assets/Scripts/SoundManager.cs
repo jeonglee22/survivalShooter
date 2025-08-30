@@ -10,21 +10,18 @@ public class SoundManager : MonoBehaviour
 	public void MusicMixerControl(float volume)
 	{
 		var pitch = volume * pitchSize - pitchSize;
-		Debug.Log(pitch);
 		masterMixer.SetFloat(Defines.musicVol, pitch);
 	}
 
 	public void EffectMixerControl(float volume)
 	{
 		var pitch = volume * pitchSize - pitchSize;
-		Debug.Log(pitch);
 		masterMixer.SetFloat(Defines.effectVol, pitch);
 	}
 
 	public void SetMasterVolume(bool b)
 	{
 		var pitch = (b ? 1f : 0f) * pitchSize - pitchSize;
-		Debug.Log(pitch);
 		masterMixer.SetFloat(Defines.masterVol, pitch);
 	}
 }

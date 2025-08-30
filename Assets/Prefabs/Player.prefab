@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429c4a95e79b8a14fb0f0c291d5c800e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 200
   damageClip: {fileID: 8300000, guid: 9922a12f34d0a084aab32de985459723, type: 3}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
 --- !u!82 &7472982878528067519

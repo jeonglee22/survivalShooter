@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,11 +14,16 @@ public class Enemy : LivingEntity
 	private NavMeshAgent agent;
 	private Animator animator;
 	private Collider collider;
+	private Rigidbody rb;
+
+	private GameManager gameManager;
 
 	public EnemyData enemyData;
 	public LayerMask layer;
 
 	public ParticleSystem hitParticle;
+
+	public int enemyScore = 10;
 
 	private Transform target;
 
@@ -67,9 +69,15 @@ public class Enemy : LivingEntity
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
 		collider = GetComponent<Collider>();
+		rb = GetComponent<Rigidbody>();
 
 		maxHP = enemyData.maxHP;
 		lastAttackTime = Time.time;
+	}
+
+	private void Start()
+	{
+		gameManager = GameObject.FindWithTag(Defines.gameManagerStr).GetComponent<GameManager>();
 	}
 
 	private void Update()
@@ -157,6 +165,7 @@ public class Enemy : LivingEntity
 		base.Die();
 		CurrentStatus = Status.Die;
 		Destroy(gameObject, destroyTime);
+		gameManager.AddScore(enemyScore);
 	}
 
 	public override void OnDamage(float damage, Vector3 hitPos, Vector3 hitNormal)
@@ -184,5 +193,12 @@ public class Enemy : LivingEntity
 		}
 
 		return minDistObj.gameObject.transform;
+	}
+
+	public void StartSinking()
+	{
+		agent.enabled = false;
+		rb.isKinematic = false;
+		Debug.Log("Sinking");
 	}
 }
