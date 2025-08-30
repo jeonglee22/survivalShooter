@@ -320,7 +320,7 @@ LineRenderer:
     textureMode: 0
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
   m_Loop: 0
@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca9169bd6abde2458987f51c2fe10d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!114 &619882246343270653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +436,7 @@ MonoBehaviour:
   maxHP: 200
   damageClip: {fileID: 8300000, guid: 9922a12f34d0a084aab32de985459723, type: 3}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
+  uIManager: {fileID: 0}
 --- !u!82 &7472982878528067519
 AudioSource:
   m_ObjectHideFlags: 0
@@ -590,8 +592,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
+      propertyPath: m_Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
       propertyPath: m_Intensity
-      value: 0.3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
+      propertyPath: m_SpotAngle
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 261868827394400691, guid: 0bd11145ced4539458f937fc4609544a, type: 3}
       propertyPath: m_Shadows.m_Type

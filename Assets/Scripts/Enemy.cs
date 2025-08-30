@@ -199,6 +199,5 @@ public class Enemy : LivingEntity
 	{
 		agent.enabled = false;
 		rb.isKinematic = false;
-		Debug.Log("Sinking");
 	}
 }

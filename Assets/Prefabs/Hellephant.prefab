@@ -316,6 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hitParticle: {fileID: 3372674506606661607}
+  manager: {fileID: 6976408608316986770, guid: a59223e9bd610734a8cccdc08c03f1b5, type: 3}
   enemyScore: 50
   destroyTime: 3
 --- !u!54 &4452932528770113784

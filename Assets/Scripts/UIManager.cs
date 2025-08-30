@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public GameObject menu;
 	public Image panelImage;
 
+	public GameObject gameOverPanel;
+	public TextMeshProUGUI gameOverText;
+
 	public SoundManager soundManager;
 
     public bool IsPaused { get; private set; }
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour
     {
 		IsPaused = false;
         menu.SetActive(IsPaused);
+		Time.timeScale = IsPaused ? 0 : 1;
 	}
 
     public void ToggleSound()
@@ -84,13 +88,42 @@ public class UIManager : MonoBehaviour
 
 	private IEnumerator Blinking()
 	{
-		for(int i = 0; i < blinkingCount; i++)
-		{
-			Color color = panelImage.color;
-			color.a = alpha - panelImage.color.a;
-			panelImage.color = color;
-			yield return new WaitForSeconds(blinkingTimeTotal / blinkingCount);
-		}
+		Color color = panelImage.color;
+		color.a = alpha;
+		panelImage.color = color;
+
+		yield return new WaitForSeconds(blinkingTimeTotal);
+
+		color = panelImage.color;
+		color.a = 0;
+		panelImage.color = color;
+
 		panelImage.gameObject.SetActive(false);
+	}
+
+	public void SetGameOverUI(bool isGameOver)
+	{
+		if(isGameOver)
+		{
+			gameOverPanel.gameObject.SetActive(true);
+			panelImage.gameObject.SetActive(false);
+			StartCoroutine(TextScaling(0f, 1f));
+		}
+		else
+		{
+			gameOverPanel.gameObject.SetActive(false);
+			gameOverText.transform.localScale = Vector3.zero;
+		}
+	}
+
+	public IEnumerator TextScaling(float scaleMin, float scaleMax)
+	{
+		var percent = 0f;
+		while (percent > 2f)
+		{
+			percent += 0.2f;
+			gameOverText.transform.localScale = new Vector3(1f,1f,1f) * Mathf.Lerp(scaleMin, scaleMax, percent);
+			yield return new WaitForSeconds(0.2f);
+		}
 	}
 }

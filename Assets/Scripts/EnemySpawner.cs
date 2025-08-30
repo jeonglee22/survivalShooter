@@ -7,6 +7,9 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform[] spawnPos;
 
+    public UIManager manager;
+    private GameManager gameManager;
+
     public float spawnInterval = 0.5f;
 
     private float spawnTime;
@@ -16,10 +19,13 @@ public class EnemySpawner : MonoBehaviour
 	private void Start()
 	{
 		spawnTime = Time.time;
+		gameManager = GameObject.FindWithTag(Defines.gameManagerStr).GetComponent<GameManager>();
 	}
 
 	private void Update()
 	{
+        if (manager.IsPaused || gameManager.IsGameOver) return;
+
         if (spawnCount < spawnMax && Time.time - spawnTime > spawnInterval)
         {
             SpawnEnemy();

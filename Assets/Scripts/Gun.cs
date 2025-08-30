@@ -43,7 +43,7 @@ public class Gun : MonoBehaviour
 		{
 			endPos = transform.position + transform.forward * gunData.fireDistance;
 		}
-
+		
 		StartCoroutine(CorShootEffect(endPos));
 	}
 
