@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
 	private LineRenderer lineRenderer;
 	
 	private float lastFireTime;
+	private Vector3 endPos;
 
 	private void Awake()
 	{
@@ -27,7 +28,7 @@ public class Gun : MonoBehaviour
 
 	public void Shoot()
 	{
-		var endPos = new Vector3();
+		endPos = new Vector3();
 		RaycastHit hit;
 		if(Physics.Raycast(transform.position, transform.forward, out hit ,gunData.fireDistance))
 		{
@@ -44,7 +45,7 @@ public class Gun : MonoBehaviour
 			endPos = transform.position + transform.forward * gunData.fireDistance;
 		}
 		
-		StartCoroutine(CorShootEffect(endPos));
+		StartCoroutine(CorShootEffect());
 	}
 
 	public void Fire()
@@ -56,7 +57,7 @@ public class Gun : MonoBehaviour
 		}
 	}
 
-	private IEnumerator CorShootEffect(Vector3 hitPos)
+	private IEnumerator CorShootEffect()
 	{
 		audioSource.PlayOneShot(gunData.shootClip);
 		shootParticle.Play();
@@ -64,12 +65,15 @@ public class Gun : MonoBehaviour
 		
 		lineRenderer.enabled = true;
 
-		lineRenderer.SetPosition(0, transform.position);
-		lineRenderer.SetPosition(1, hitPos);
-
 		yield return new WaitForSeconds(gunData.fireInterval * 0.5f);
 
 		lineRenderer.enabled = false;
 		shootParticle.lights.light.enabled = false;
+	}
+
+	private void LateUpdate()
+	{
+		lineRenderer.SetPosition(0, transform.position);
+		lineRenderer.SetPosition(1, endPos);
 	}
 }
