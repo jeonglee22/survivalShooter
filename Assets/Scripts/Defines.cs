@@ -13,4 +13,5 @@ public class Defines
     public static readonly string masterVol = "Master";
 
     public static readonly string gameManagerStr = "GameController";
+    public static readonly string mainCameraStr = "MainCamera";
 }
