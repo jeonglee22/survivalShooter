@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput input;
     private Animator animator;
     private Rigidbody rb;
-    private Camera mainCamera;
 
     public float cameraY = 25f;
 
@@ -20,11 +19,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 	}
 
-	private void Start()
-	{
-		mainCamera = GameObject.FindWithTag(Defines.mainCameraStr).GetComponent<Camera>();
-	}
-
 	// Update is called once per frame
 	void FixedUpdate()
     {
@@ -35,10 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
         var moveAmount = dir * moveSpeed * Time.deltaTime;
 		rb.MovePosition(moveAmount + transform.position);
-
-        var cameraPos = transform.position;
-        cameraPos.y = cameraY;
-        mainCamera.transform.position = cameraPos;
 
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(mouseRay, out RaycastHit hit, float.PositiveInfinity, groundLayer))

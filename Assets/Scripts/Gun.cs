@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
 	{
 		endPos = new Vector3();
 		RaycastHit hit;
-		if(Physics.Raycast(transform.position, transform.forward, out hit ,gunData.fireDistance))
+		if(Physics.Raycast(transform.position, transform.forward, out hit ,gunData.fireDistance, Defines.defaultLayer))
 		{
 			endPos = hit.point;
 

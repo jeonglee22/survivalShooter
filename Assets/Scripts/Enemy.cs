@@ -20,6 +20,7 @@ public class Enemy : LivingEntity
 
 	public EnemyData enemyData;
 	public LayerMask layer;
+	public GameObject expPrefab;
 
 	public ParticleSystem hitParticle;
 
@@ -166,6 +167,7 @@ public class Enemy : LivingEntity
 		CurrentStatus = Status.Die;
 		Destroy(gameObject, destroyTime);
 		gameManager.AddScore(enemyScore);
+		Instantiate(expPrefab, transform.position, Quaternion.identity);
 	}
 
 	public override void OnDamage(float damage, Vector3 hitPos, Vector3 hitNormal)
