@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 54453796}
   - component: {fileID: 54453795}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HeartImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4428,11 +4428,11 @@ RectTransform:
   m_Children:
   - {fileID: 1201787953}
   - {fileID: 54453794}
+  - {fileID: 120158745}
   - {fileID: 1456686522}
   - {fileID: 1124777054}
   - {fileID: 711273348}
   - {fileID: 2048938212}
-  - {fileID: 120158745}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -25,9 +25,9 @@ public class PlayerManager : MonoBehaviour
     public void AddExp(float exp)
     {
         this.exp += exp;
-        while (exp >= expMax)
+        while (this.exp >= expMax)
         {
-            exp -= expMax;
+            this.exp -= expMax;
             level++;
             expMax = level * 50 + 100;
         }
