@@ -3,6 +3,7 @@ using UnityEngine;
 public class ExpItem : MonoBehaviour
 {
     public float despawnTime = 10f;
+    public float expAmount = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,7 +15,12 @@ public class ExpItem : MonoBehaviour
 	{
 		if(other.CompareTag(Defines.playerStr))
         {
-
+            var playerManager = other.GetComponent<PlayerManager>();
+            if(playerManager != null)
+            {
+                playerManager.AddExp(expAmount);
+                gameObject.SetActive(false);
+            }
         }
 	}
 }

@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
 
 	public SoundManager soundManager;
 
+	public Slider expSlider;
+	public TextMeshProUGUI levelText;
+
     public bool IsPaused { get; private set; }
     public bool SoundOnOff { get; private set; }
 
@@ -125,5 +128,15 @@ public class UIManager : MonoBehaviour
 			gameOverText.transform.localScale = new Vector3(1f,1f,1f) * Mathf.Lerp(scaleMin, scaleMax, percent);
 			yield return new WaitForSeconds(0.2f);
 		}
+	}
+
+	public void SetExpSlider(float expPercent)
+	{
+		expSlider.value = expPercent;
+	}
+
+	public void SetLevelText(int level)
+	{
+		levelText.text = $"Level : {level}";
 	}
 }

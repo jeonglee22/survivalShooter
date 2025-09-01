@@ -16,6 +16,7 @@ public class Defines
     public static readonly string mainCameraStr = "MainCamera";
     public static readonly string playerStr = "Player";
 
-    public static readonly int itemLayer = LayerMask.NameToLayer("Item");
-    public static readonly int defaultLayer = LayerMask.NameToLayer("Default");
+    public static readonly int itemLayer = LayerMask.GetMask("Item");
+    public static readonly int defaultLayer = LayerMask.GetMask("Default");
+    public static readonly int ignoreRaycastLayer = ~LayerMask.GetMask("IgnoreRaycast");
 }

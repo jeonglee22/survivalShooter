@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7971721061425238074}
   - component: {fileID: 2819360745953358685}
   - component: {fileID: 2554970737485646741}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ExpItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -190,3 +190,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 10
+  expAmount: 10

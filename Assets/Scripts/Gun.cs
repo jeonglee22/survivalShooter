@@ -30,10 +30,10 @@ public class Gun : MonoBehaviour
 	{
 		endPos = new Vector3();
 		RaycastHit hit;
-		if(Physics.Raycast(transform.position, transform.forward, out hit ,gunData.fireDistance, Defines.defaultLayer))
+		if(Physics.Raycast(transform.position, transform.forward, out hit, gunData.fireDistance, Defines.ignoreRaycastLayer))
 		{
 			endPos = hit.point;
-
+			Debug.Log(Defines.ignoreRaycastLayer);
 			if(hit.collider.GetComponent<IDamagable>() != null)
 			{
 				var obj = hit.collider.GetComponent<IDamagable>();
